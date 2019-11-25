@@ -11,6 +11,8 @@ var express       = require("express"),
     User          = require("./models/user"),
     seedDB        = require("./seeds")
 
+var port = process.env.PORT || 3000;
+
 //Requiring routes
 var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
@@ -49,6 +51,6 @@ app.use("/", authRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 
-app.listen(3000, function(){
+app.listen(port, function(){
   console.log("Server has started!");
 });
