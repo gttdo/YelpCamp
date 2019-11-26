@@ -19,16 +19,20 @@ var commentRoutes = require("./routes/comments"),
     authRoutes = require("./routes/auth")
 
 //Connect DB to Mongodb Atlas
-mongoose.connect('mongodb+srv://gvinces:032089305sis.l@cluster0-y5zvd.mongodb.net/test?retryWrites=true&w=majority', {
-  useNewUrlParser: true
-}).then(() => {
-  console.log('Connected to DB!');
-}).catch(err => {
-  console.log('ERROR:', err.message);
-});
+// mongoose.connect('mongodb+srv://gvinces:032089305sis.l@cluster0-y5zvd.mongodb.net/test?retryWrites=true&w=majority', {
+//   useNewUrlParser: true
+// }).then(() => {
+//   console.log('Connected to DB!');
+// }).catch(err => {
+//   console.log('ERROR:', err.message);
+// });
 
 // mongoose.set('useNewUrlParser', true);
 // mongoose.connect("mongodb://localhost/yelp_camp");
+
+mongoose.set('useNewUrlParser', true);
+mongoose.connect("mongodb://gvinces:sora112@ds049150.mlab.com:49150/heroku_b07m9f6r");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
