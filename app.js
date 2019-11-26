@@ -20,8 +20,7 @@ var commentRoutes = require("./routes/comments"),
 
 //Connect DB to Mongodb Atlas
 mongoose.connect('mongodb+srv://gvinces:032089305sis.l@cluster0-y5zvd.azure.mongodb.net/test?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  UseCreateIndex: true
+  useNewUrlParser: true
 }).then(() => {
   console.log('Connected to DB!');
 }).catch(err => {
