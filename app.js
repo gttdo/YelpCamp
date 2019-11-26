@@ -18,8 +18,20 @@ var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
     authRoutes = require("./routes/auth")
 
+//Connect DB to Mongodb Atlas
 mongoose.set('useNewUrlParser', true);
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect('mongodb+srv://gvinces:032089305sis.l@cluster0-y5zvd.azure.mongodb.net/test?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  UseCreateIndex: true
+}).then(() => {
+  console.log('Connected to DB!');
+}).catch(err => {
+  console.log('ERROR:', err.message);
+});
+
+// mongoose.set('useNewUrlParser', true);
+// mongoose.connect("mongodb://localhost/yelp_camp");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
