@@ -12,6 +12,7 @@ var express       = require("express"),
     seedDB        = require("./seeds")
 
 var port = process.env.PORT || 3000;
+//Datebase variables
 var localDatabaseURL = "mongodb://localhost/yelp_camp";
 var databaseURL = process.env.DATABASEURL || localDatabaseURL;
 
@@ -20,17 +21,13 @@ var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
     authRoutes = require("./routes/auth")
 
-//Connect DB locally to Mongodb
+//To connect database
 mongoose.set('useNewUrlParser', true);
-// mongoose.connect("mongodb://localhost/yelp_camp");
 mongoose.connect(databaseURL);
-
+//Connect DB locally to Mongodb
+// mongoose.connect("mongodb://localhost/yelp_camp");
 //Connect DB to mLabs
-// mongoose.set('useNewUrlParser', true);
-// mongoose.connect("mongodb://gvinces:sora112@ds049150.mlab.com:49150/heroku_b07m9f6r");
-
-
-
+//Connected using and enviroment variable on Heroku
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
