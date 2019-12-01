@@ -13,7 +13,7 @@ var express       = require("express"),
 
 var port = process.env.PORT || 3000;
 var localDatabaseURL = "mongodb://localhost/yelp_camp";
-var database = localDatabaseURL || process.env.MONGODB_URI;
+var databaseURL = process.env.DATABASEURL || localDatabaseURL;
 
 //Requiring routes
 var commentRoutes = require("./routes/comments"),
@@ -23,7 +23,7 @@ var commentRoutes = require("./routes/comments"),
 //Connect DB locally to Mongodb
 mongoose.set('useNewUrlParser', true);
 // mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect(database);
+mongoose.connect(databaseURL);
 
 //Connect DB to mLabs
 // mongoose.set('useNewUrlParser', true);
