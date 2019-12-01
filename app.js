@@ -12,26 +12,24 @@ var express       = require("express"),
     seedDB        = require("./seeds")
 
 var port = process.env.PORT || 3000;
+var localDatabaseURL = "mongodb://localhost/yelp_camp";
+var database = localDatabaseURL || process.env.DATABASEURL;
 
 //Requiring routes
 var commentRoutes = require("./routes/comments"),
     campgroundsRoutes = require("./routes/campgrounds"),
     authRoutes = require("./routes/auth")
 
-//Connect DB to Mongodb Atlas
-// mongoose.connect('mongodb+srv://gvinces:032089305sis.l@cluster0-y5zvd.mongodb.net/test?retryWrites=true&w=majority', {
-//   useNewUrlParser: true
-// }).then(() => {
-//   console.log('Connected to DB!');
-// }).catch(err => {
-//   console.log('ERROR:', err.message);
-// });
-
-// mongoose.set('useNewUrlParser', true);
-// mongoose.connect("mongodb://localhost/yelp_camp");
-
+//Connect DB locally to Mongodb
 mongoose.set('useNewUrlParser', true);
-mongoose.connect("mongodb://gvinces:sora112@ds049150.mlab.com:49150/heroku_b07m9f6r");
+// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect(database);
+
+//Connect DB to mLabs
+// mongoose.set('useNewUrlParser', true);
+// mongoose.connect("mongodb://gvinces:sora112@ds049150.mlab.com:49150/heroku_b07m9f6r");
+
+
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -67,4 +65,5 @@ app.use("/campgrounds", campgroundsRoutes);
 
 app.listen(port, function(){
   console.log("Server has started!");
+
 });
