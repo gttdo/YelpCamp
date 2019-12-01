@@ -13,7 +13,7 @@ var express       = require("express"),
 
 var port = process.env.PORT || 3000;
 var localDatabaseURL = "mongodb://localhost/yelp_camp";
-var database = localDatabaseURL || process.env.DATABASEURL;
+var database = localDatabaseURL || process.env.MONGODB_URI;
 
 //Requiring routes
 var commentRoutes = require("./routes/comments"),
